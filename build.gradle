@@ -1,0 +1,78 @@
+import java.nio.file.Files
+
+plugins {
+    id "architectury-plugin" version "3.4-SNAPSHOT"
+    id "dev.architectury.loom" version "0.12.0-SNAPSHOT" apply false
+}
+
+architectury {
+    minecraft = rootProject.minecraft_version
+}
+//By Brenden Delano (Creep3rcrafter/Snakeman51002) 2022
+task rename {
+    ext.renameResources = { String toReplace, String replaceWith, File file ->
+        if (!toReplace.equals(replaceWith)) {
+            File newFile = file;
+            if (file.toString().contains(toReplace)) {
+                System.out.println("${file}     <- Previous");
+                newFile = new File(file.toString().replaceAll(toReplace, replaceWith));
+                file.renameTo(newFile);
+                System.out.println("${newFile}      <- Changed");
+            }
+            if (newFile.isDirectory()) {
+                for (int i = 0; i < newFile.listFiles().length; i++) {
+                    renameResources(toReplace, replaceWith, newFile.listFiles()[i]);
+                }
+            }
+        }
+    }
+    doLast {
+        // One is for lower case and the other is for case sensitive.
+        // Dont put spaces and other stupid things im not responsible.
+        // Only renames files and folders does not rename text inside files,
+        // that's what "Intellij Replace In Files" is for
+        // also its pretty dangerous but yea....
+
+        //             (What it is, What it should be, Project dir)
+        renameResources("jarred","jarred", file(project.projectDir))
+        renameResources("Jarred","Jarred", file(project.projectDir))
+    }
+}
+
+subprojects {
+    apply plugin: "dev.architectury.loom"
+
+    loom {
+        silentMojangMappingsLicense()
+    }
+
+    dependencies {
+        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+        mappings loom.officialMojangMappings()
+    }
+}
+
+allprojects {
+    apply plugin: "java"
+    apply plugin: "architectury-plugin"
+    apply plugin: "maven-publish"
+
+    archivesBaseName = rootProject.archives_base_name
+    version = rootProject.mod_version
+    group = rootProject.maven_group
+
+    repositories {
+        maven {
+            url = "https://maven.parchmentmc.org"
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.release = 17
+    }
+
+    java {
+        withSourcesJar()
+    }
+}

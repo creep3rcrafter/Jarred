@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "net.creep3rcrafter.jarred.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+  ],
+  "mixins": [
+    "PotionBrewingMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

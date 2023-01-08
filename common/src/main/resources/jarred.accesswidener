@@ -1,0 +1,7 @@
+accessWidener   v2  named
+accessible field net/minecraft/world/item/Item maxDamage I
+mutable field net/minecraft/world/item/Item maxDamage I
+extendable method net/minecraft/world/item/Item getMaxDamage ()I
+accessible field net/minecraft/world/item/alchemy/PotionBrewing ALLOWED_CONTAINERS Ljava/util/List;
+accessible method net/minecraft/world/item/alchemy/PotionBrewing addContainer (Lnet/minecraft/world/item/Item;)V
+accessible method net/minecraft/world/item/alchemy/PotionBrewing addMix (Lnet/minecraft/world/item/alchemy/Potion;Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/alchemy/Potion;)V

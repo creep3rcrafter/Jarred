@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "mixin": [
+    "jarred.mixins.json",
+    "jarred-common.mixins.json"
+  ],
+  "quilt_loader": {
+    "group": "${group}",
+    "id": "jarred",
+    "version": "${version}",
+    "name": "Jarred (Quilt)",
+    "description": "",
+    "authors": ["Creep3rCrafter"],
+    "contact": {
+      "sources": ""
+    },
+    "license": "All Rights Reserved",
+    "icon": "assets/jarred/logo.png",
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "environment": "*",
+    "entrypoints": {
+      "init": [
+        "net.jarred.quilt.JarredQuilt"
+      ]
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "version": "*"
+      },
+      {
+        "id": "quilt_base",
+        "version": "*"
+      },
+      {
+        "id": "minecraft",
+        "version": ">=1.19.2"
+      },
+      {
+        "id": "architectury",
+        "version": ">=6.2.43"
+      }
+    ]
+  }
+}

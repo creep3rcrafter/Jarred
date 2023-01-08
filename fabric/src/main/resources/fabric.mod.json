@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "jarred",
+  "version": "${version}",
+  "name": "Jarred (Fabric)",
+  "description": "",
+  "authors": [
+    "Creep3rCrafter"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+  "license": "All Rights Reserved",
+  "icon": "assets/jarred/logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.creep3rcrafter.jarred.fabric.JarredFabric"
+    ]
+  },
+  "mixins": [
+    "jarred.mixins.json",
+    "jarred-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.19.2",
+    "architectury": ">=6.2.43"
+  }
+}

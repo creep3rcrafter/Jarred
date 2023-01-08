@@ -1,0 +1,26 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jarred:item/empty_jar"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "jarred:fill": 0
+      },
+      "model": "jarred:item/potion_jar_0"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 1
+      },
+      "model": "jarred:item/potion_jar_1"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 2
+      },
+      "model": "jarred:item/potion_jar_2"
+    }
+  ]
+}

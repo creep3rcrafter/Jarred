@@ -1,0 +1,1 @@
+# (Forge / Fabric / Quilt) Mod Template
