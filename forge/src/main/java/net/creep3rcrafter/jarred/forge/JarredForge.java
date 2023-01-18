@@ -4,11 +4,13 @@ import dev.architectury.platform.forge.EventBuses;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
 import net.creep3rcrafter.jarred.Jarred;
 import net.creep3rcrafter.jarred.register.ModItems;
+import net.minecraft.client.gui.screens.inventory.BrewingStandScreen;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -31,6 +33,8 @@ public class JarredForge {
         ItemProperties.register(ModItems.POTION_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
             return itemStack.getDamageValue();
         });
+        //PotionBrewing.ALLOWED_CONTAINERS.add(Ingredient.of(new ItemLike[]{ModItems.POTION_JAR.get()}));
+        PotionBrewing.addContainer(ModItems.POTION_JAR.get());
         //PotionBrewing.ALLOWED_CONTAINERS.add(Ingredient.of(new ItemLike[]{ModItems.POTION_JAR.get()}));
         //PotionBrewing.addContainer(ModItems.POTION_JAR.get());
     }
