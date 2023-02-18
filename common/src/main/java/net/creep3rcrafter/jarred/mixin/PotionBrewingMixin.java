@@ -22,14 +22,11 @@ public abstract class PotionBrewingMixin {
 
     @Inject(method = "bootStrap()V", at = @At("HEAD"))
     private static void inject(CallbackInfo ci) {
-<<<<<<< Updated upstream
         //addContainer(ModItems.POTION_JAR.get());
-=======
         /*
         addContainer(item -> {
             return ModItems.POTION_JAR.get();
         });
          */
->>>>>>> Stashed changes
     }
 }
