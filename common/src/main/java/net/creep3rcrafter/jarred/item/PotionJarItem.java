@@ -28,7 +28,7 @@ public class PotionJarItem extends PotionItem {
         super(properties);
     }
     @Override
-    public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
+    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack itemStack, @NotNull Level level, @NotNull LivingEntity livingEntity) {
         Player player = livingEntity instanceof Player ? (Player)livingEntity : null;
         if (player instanceof ServerPlayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, itemStack);
@@ -36,10 +36,8 @@ public class PotionJarItem extends PotionItem {
 
         if (!level.isClientSide) {
             List<MobEffectInstance> list = PotionUtils.getMobEffects(itemStack);
-            Iterator var6 = list.iterator();
 
-            while(var6.hasNext()) {
-                MobEffectInstance mobEffectInstance = (MobEffectInstance)var6.next();
+            for (MobEffectInstance mobEffectInstance : list) {
                 if (mobEffectInstance.getEffect().isInstantenous()) {
                     mobEffectInstance.getEffect().applyInstantenousEffect(player, player, livingEntity, mobEffectInstance.getAmplifier(), 1.0);
                 } else {
@@ -64,11 +62,9 @@ public class PotionJarItem extends PotionItem {
         return itemStack;
     }
     @Override
-    public void fillItemCategory(CreativeModeTab creativeModeTab, NonNullList<ItemStack> nonNullList) {
+    public void fillItemCategory(@NotNull CreativeModeTab creativeModeTab, @NotNull NonNullList<ItemStack> nonNullList) {
         if (this.allowedIn(creativeModeTab)) {
-            Iterator var3 = Registry.POTION.iterator();
-            while(var3.hasNext()) {
-                Potion potion = (Potion)var3.next();
+            for (Potion potion : Registry.POTION) {
                 if (potion != Potions.EMPTY) {
                     nonNullList.add(PotionUtils.setPotion(new ItemStack(this), potion));
                     ColorHandlerRegistry.registerItemColors(new ItemColor() {
@@ -83,7 +79,7 @@ public class PotionJarItem extends PotionItem {
     }
 
     @Override
-    public Component getName(ItemStack itemStack) {
+    public @NotNull Component getName(@NotNull ItemStack itemStack) {
         String potionID;
         if (PotionUtils.getPotion(itemStack) == Potions.EMPTY){
             potionID = "Uncraftable";

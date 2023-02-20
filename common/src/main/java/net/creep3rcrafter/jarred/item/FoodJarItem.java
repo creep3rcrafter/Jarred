@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 import java.util.List;
@@ -23,7 +24,7 @@ public class FoodJarItem extends Item {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
+    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack itemStack, @NotNull Level level, @NotNull LivingEntity livingEntity) {
         Player player = livingEntity instanceof Player ? (Player)livingEntity : null;
         if (player instanceof ServerPlayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, itemStack);
@@ -33,15 +34,13 @@ public class FoodJarItem extends Item {
             if (itemStack.isEdible()) {
                 level.playSound((Player)null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), this.getEatingSound(), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
                 List<Pair<MobEffectInstance, Float>> list = this.getFoodProperties().getEffects();
-                Iterator var6 = list.iterator();
 
-                while(var6.hasNext()) {
-                    Pair<MobEffectInstance, Float> pair = (Pair)var6.next();
-                    if (pair.getFirst() != null && level.random.nextFloat() < (Float)pair.getSecond()) {
-                        livingEntity.addEffect(new MobEffectInstance((MobEffectInstance)pair.getFirst()));
+                for (Pair<MobEffectInstance, Float> mobEffectInstanceFloatPair : list) {
+                    Pair<MobEffectInstance, Float> pair = (Pair) mobEffectInstanceFloatPair;
+                    if (pair.getFirst() != null && level.random.nextFloat() < (Float) pair.getSecond()) {
+                        livingEntity.addEffect(new MobEffectInstance((MobEffectInstance) pair.getFirst()));
                     }
                 }
-
                 livingEntity.gameEvent(GameEvent.EAT);
                 player.getFoodData().eat(getFoodProperties().getNutrition(), getFoodProperties().getSaturationModifier());
             }
@@ -58,8 +57,6 @@ public class FoodJarItem extends Item {
                 }
             }
         }
-
-        //livingEntity.gameEvent(GameEvent.EAT);
         return itemStack;
     }
 }
