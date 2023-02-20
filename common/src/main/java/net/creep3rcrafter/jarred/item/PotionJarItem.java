@@ -67,7 +67,6 @@ public class PotionJarItem extends PotionItem {
     public void fillItemCategory(CreativeModeTab creativeModeTab, NonNullList<ItemStack> nonNullList) {
         if (this.allowedIn(creativeModeTab)) {
             Iterator var3 = Registry.POTION.iterator();
-
             while(var3.hasNext()) {
                 Potion potion = (Potion)var3.next();
                 if (potion != Potions.EMPTY) {

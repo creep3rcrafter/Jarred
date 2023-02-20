@@ -20,13 +20,10 @@ import java.util.List;
 public class FoodJarItem extends Item {
     public FoodJarItem(Item.Properties properties) {
         super(properties);
-        //HoneyBottleItem
-        //Items
     }
 
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
-        //super.finishUsingItem(itemStack, level, livingEntity);
         Player player = livingEntity instanceof Player ? (Player)livingEntity : null;
         if (player instanceof ServerPlayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)player, itemStack);
