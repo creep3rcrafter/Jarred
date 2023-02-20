@@ -5,7 +5,7 @@
   "client": [
   ],
   "mixins": [
-    "PotionBrewingMixin"
+    "BrewingStandMenuPotionSlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1
