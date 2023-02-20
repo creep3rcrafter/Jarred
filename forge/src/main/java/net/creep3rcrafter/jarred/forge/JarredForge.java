@@ -2,6 +2,7 @@ package net.creep3rcrafter.jarred.forge;
 
 import dev.architectury.platform.forge.EventBuses;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
+import net.creep3rcrafter.jarred.BrewingRecipes;
 import net.creep3rcrafter.jarred.Jarred;
 import net.creep3rcrafter.jarred.register.ModItems;
 import net.minecraft.client.gui.screens.inventory.BrewingStandScreen;
@@ -29,13 +30,9 @@ public class JarredForge {
 
     private void commonSetupEvent(FMLCommonSetupEvent event){
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        //eventBus.register(new BrewingRecipes()); //Example
         ItemProperties.register(ModItems.POTION_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
             return itemStack.getDamageValue();
         });
-        //PotionBrewing.ALLOWED_CONTAINERS.add(Ingredient.of(new ItemLike[]{ModItems.POTION_JAR.get()}));
-        PotionBrewing.addContainer(ModItems.POTION_JAR.get());
-        //PotionBrewing.ALLOWED_CONTAINERS.add(Ingredient.of(new ItemLike[]{ModItems.POTION_JAR.get()}));
-        //PotionBrewing.addContainer(ModItems.POTION_JAR.get());
+        eventBus.register(new BrewingRecipes());
     }
 }

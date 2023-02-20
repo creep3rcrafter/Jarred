@@ -1,4 +1,4 @@
-package net.creep3rcrafter.jarred;
+package net.creep3rcrafter.jarred.item;
 
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import net.creep3rcrafter.jarred.register.ModItems;
@@ -26,7 +26,6 @@ import java.util.List;
 public class PotionJarItem extends PotionItem {
     public PotionJarItem(Item.Properties properties) {
         super(properties);
-        this.maxDamage = 3;
     }
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
