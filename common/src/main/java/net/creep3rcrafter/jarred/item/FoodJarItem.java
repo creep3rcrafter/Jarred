@@ -41,7 +41,6 @@ public class FoodJarItem extends Item {
                         livingEntity.addEffect(new MobEffectInstance((MobEffectInstance)pair.getFirst()));
                     }
                 }
-
                 livingEntity.gameEvent(GameEvent.EAT);
                 player.getFoodData().eat(getFoodProperties().getNutrition(), getFoodProperties().getSaturationModifier());
             }
