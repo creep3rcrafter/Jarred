@@ -1,4 +1,18 @@
 {
   "item.jarred.empty_jar": "Empty Jar",
-  "item.jarred.potion_jar": "Jar of "
+  "item.jarred.potion_jar": "Jar of ",
+  "item.jarred.cookie_jar": "Cookie Jar",
+  "item.jarred.sweet_berry_jar": "Sweet Berry Jar",
+  "item.jarred.sweet_berry_jelly_jar": "Jar of Sweet Berry Jelly",
+  "item.jarred.glow_berry_jar": "Glow Berry Jar",
+  "item.jarred.glow_berry_jelly_jar": "Jar of Glow Berry Jelly",
+  "item.jarred.apple_jar": "Apple Jar",
+  "item.jarred.golden_apple_jar": "Golden Apple Jar",
+  "item.jarred.enchanted_golden_apple_jar": "Enchanted Golden Apple Jar",
+  "item.jarred.apple_sauce_jar": "Jar of Apple Sauce",
+  "item.jarred.golden_apple_sauce_jar": "Jar of Golden Apple Sauce",
+  "item.jarred.enchanted_golden_apple_sauce_jar": "Jar of Enchanted Golden Apple Sauce",
+  "item.jarred.apple_slices_jar": "Jar of Apple Slices",
+  "item.jarred.golden_apple_slices_jar": "Jar of Golden Apple Slices",
+  "item.jarred.enchanted_golden_apple_slices_jar": "Jar of Enchanted Golden Apple Slices"
 }
