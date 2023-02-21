@@ -1,17 +1,11 @@
 package net.creep3rcrafter.jarred.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import dev.architectury.registry.item.ItemPropertiesRegistry;
 import net.creep3rcrafter.jarred.BrewingRecipes;
 import net.creep3rcrafter.jarred.Jarred;
 import net.creep3rcrafter.jarred.register.ModItems;
-import net.minecraft.client.gui.screens.inventory.BrewingStandScreen;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.alchemy.PotionBrewing;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -30,9 +24,54 @@ public class JarredForge {
 
     private void commonSetupEvent(FMLCommonSetupEvent event){
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        eventBus.register(new BrewingRecipes());
         ItemProperties.register(ModItems.POTION_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
             return itemStack.getDamageValue();
         });
-        eventBus.register(new BrewingRecipes());
+        ItemProperties.register(ModItems.APPLE_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.APPLE_SLICES_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.APPLE_SAUCE_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.GOLDEN_APPLE_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.GOLDEN_APPLE_SAUCE_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.GOLDEN_APPLE_SLICES_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.ENCHANTED_GOLDEN_APPLE_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.ENCHANTED_GOLDEN_APPLE_SAUCE_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.ENCHANTED_GOLDEN_APPLE_SLICES_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.CHOCOLATE_MILK_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.MILK_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.SWEET_BERRY_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.SWEET_BERRY_JELLY_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.GLOW_BERRY_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.GLOW_BERRY_JELLY_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
     }
 }

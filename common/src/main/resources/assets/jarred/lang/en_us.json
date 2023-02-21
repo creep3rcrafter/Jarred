@@ -14,5 +14,12 @@
   "item.jarred.enchanted_golden_apple_sauce_jar": "Jar of Enchanted Golden Apple Sauce",
   "item.jarred.apple_slices_jar": "Jar of Apple Slices",
   "item.jarred.golden_apple_slices_jar": "Jar of Golden Apple Slices",
-  "item.jarred.enchanted_golden_apple_slices_jar": "Jar of Enchanted Golden Apple Slices"
+  "item.jarred.enchanted_golden_apple_slices_jar": "Jar of Enchanted Golden Apple Slices",
+  "item.jarred.milk_jar": "Jar of Milk",
+  "item.jarred.chocolate_milk_jar": "Jar of Chocolate Milk",
+  "item.jarred.honey_jar": "Jar of Honey",
+  "item.jarred.beetroot_soup_jar": "Jar of Beetroot Soup",
+  "item.jarred.suspicious_stew_jar": "Jar of Suspicious Stew",
+  "item.jarred.mushroom_stew_jar": "Jar of Mushroom Stew",
+  "item.jarred.rabbit_stew_jar": "Jar of Rabbit Stew"
 }
