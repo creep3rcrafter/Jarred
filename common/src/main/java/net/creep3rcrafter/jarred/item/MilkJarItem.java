@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MilkJarItem extends LiquidFoodJarItem {
+public class MilkJarItem extends FoodJarItem {
     private static final int DRINK_DURATION = 32;
     public MilkJarItem(Properties properties) {
         super(properties);

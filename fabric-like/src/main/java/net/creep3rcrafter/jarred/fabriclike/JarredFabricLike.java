@@ -15,6 +15,9 @@ public class JarredFabricLike {
         ItemProperties.register(ModItems.POTION_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
             return itemStack.getDamageValue();
         });
+        ItemProperties.register(ModItems.COOKIE_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
         ItemProperties.register(ModItems.APPLE_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
             return itemStack.getDamageValue();
         });
@@ -58,6 +61,9 @@ public class JarredFabricLike {
             return itemStack.getDamageValue();
         });
         ItemProperties.register(ModItems.GLOW_BERRY_JELLY_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
+            return itemStack.getDamageValue();
+        });
+        ItemProperties.register(ModItems.HONEY_JAR.get(), new ResourceLocation(MOD_ID, "fill"), (itemStack, level, livingEntity, i)->{
             return itemStack.getDamageValue();
         });
     }

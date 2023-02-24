@@ -1,0 +1,56 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jarred:item/empty_jar"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "jarred:fill": 0
+      },
+      "model": "jarred:item/sweet_berry_jelly_jar_0"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 1
+      },
+      "model": "jarred:item/sweet_berry_jelly_jar_1"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 2
+      },
+      "model": "jarred:item/sweet_berry_jelly_jar_2"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 3
+      },
+      "model": "jarred:item/sweet_berry_jelly_jar_3"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 4
+      },
+      "model": "jarred:item/sweet_berry_jelly_jar_4"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 5
+      },
+      "model": "jarred:item/sweet_berry_jelly_jar_5"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 6
+      },
+      "model": "jarred:item/sweet_berry_jelly_jar_6"
+    },
+    {
+      "predicate": {
+        "jarred:fill": 7
+      },
+      "model": "jarred:item/sweet_berry_jelly_jar_7"
+    }
+  ]
+}
