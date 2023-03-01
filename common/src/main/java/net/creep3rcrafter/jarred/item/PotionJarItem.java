@@ -2,11 +2,13 @@ package net.creep3rcrafter.jarred.item;
 
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import net.creep3rcrafter.jarred.register.ModItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -20,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -80,25 +83,75 @@ public class PotionJarItem extends PotionItem {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack itemStack) {
-        String potionID;
-        if (PotionUtils.getPotion(itemStack) == Potions.EMPTY){
-            potionID = "Uncraftable";
-            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID)).append(Component.translatable(" Potion"));
+        StringBuilder potionID;
+        if (PotionUtils.getCustomEffects(itemStack).size() > 0){
+            List<MobEffectInstance> mobEffectInstances = new ArrayList<>();
+            mobEffectInstances.addAll(PotionUtils.getMobEffects(itemStack));
+            mobEffectInstances.addAll(PotionUtils.getCustomEffects(itemStack));
+            potionID = new StringBuilder();
+            if (mobEffectInstances.size() == 1){
+                String potion1 = mobEffectInstances.get(0).getDescriptionId().substring(17);
+                int length = potion1.length();
+                int c1 = 0;
+                int c2 = 0;
+                int c3 = 0;
+                int total = 0;
+                for (int i = 0; i < length; i++){
+                    c1 = potion1.charAt(i) / 3;
+                    total = c1 + c2 + c3;
+                    potionID.append((char) total);
+                }
+            }else if (mobEffectInstances.size() == 2){
+                String potion1 = mobEffectInstances.get(0).getDescriptionId().substring(17);
+                String potion2 = mobEffectInstances.get(1).getDescriptionId().substring(17);
+                int length = Math.min(potion1.length(), potion2.length());
+                int c1 = 0;
+                int c2 = 0;
+                int c3 = 0;
+                int total = 0;
+                for (int i = 0; i < length; i++){
+                    c1 = potion1.charAt(i) / 3;
+                    c2 = potion2.charAt(i) / 3;
+                    total = c1 + c2 + c3;
+                    potionID.append((char) total);
+                }
+            }else if (mobEffectInstances.size() >= 3){
+                String potion1 = mobEffectInstances.get(0).getDescriptionId().substring(17);
+                String potion2 = mobEffectInstances.get(1).getDescriptionId().substring(17);
+                String potion3 = mobEffectInstances.get(2).getDescriptionId().substring(17);
+                int length = Math.min(potion1.length(), Math.min(potion2.length(), potion3.length()));
+                int c1 = 0;
+                int c2 = 0;
+                int c3 = 0;
+                int total = 0;
+                for (int i = 0; i < length; i++){
+                    c1 = potion1.charAt(i) / 3;
+                    c2 = potion2.charAt(i) / 3;
+                    c3 = potion3.charAt(i) / 3;
+                    total = c1 + c2 + c3;
+                    potionID.append((char) total);
+                }
+            }
+            return Component.translatable(this.getDescriptionId())
+                    .append(Component.translatable("§k" + potionID.toString()).append(Component.translatable("§r Potion")));
+        }else if (PotionUtils.getPotion(itemStack) == Potions.EMPTY){
+            potionID = new StringBuilder("Uncraftable");
+            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID.toString())).append(Component.translatable(" Potion"));
             //return Component.translatable(potionID).append(Component.translatable(this.getDescriptionId()));
         }else if (PotionUtils.getPotion(itemStack) == Potions.WATER){
-            potionID = "Water";
-            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID));
+            potionID = new StringBuilder("Water");
+            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID.toString()));
         }else if (PotionUtils.getPotion(itemStack) == Potions.AWKWARD){
-            potionID = "Awkward";
-            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID)).append(Component.translatable( " Potion"));
+            potionID = new StringBuilder("Awkward");
+            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID.toString())).append(Component.translatable( " Potion"));
         }else if (PotionUtils.getPotion(itemStack) == Potions.THICK){
-            potionID = "Thick";
-            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID)).append(Component.translatable(" Potion"));
+            potionID = new StringBuilder("Thick");
+            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID.toString())).append(Component.translatable(" Potion"));
         }else if (PotionUtils.getPotion(itemStack) == Potions.MUNDANE){
-            potionID = "Mundane";
-            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID)).append(Component.translatable(" Potion"));
+            potionID = new StringBuilder("Mundane");
+            return Component.translatable(this.getDescriptionId()).append(Component.translatable(potionID.toString())).append(Component.translatable(" Potion"));
         }else{
-            potionID = Component.translatable(PotionUtils.getPotion(itemStack).getName("item.minecraft.potion.effect.")).getString();
+            potionID = new StringBuilder(Component.translatable(PotionUtils.getPotion(itemStack).getName("item.minecraft.potion.effect.")).getString());
             String capPotionName = Component.translatable(potionID.substring(10)).getString();
             capPotionName = capPotionName.substring(0, 1).toUpperCase() + capPotionName.substring(1);
             return Component.translatable(this.getDescriptionId()).append(Component.translatable(capPotionName)).append(Component.translatable(" Potion"));

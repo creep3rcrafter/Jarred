@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(net.minecraft.world.inventory.BrewingStandMenu.PotionSlot.class)
-public abstract class BrewingStandMenuPotionSlotMixin extends Slot {
-    public BrewingStandMenuPotionSlotMixin(Container container, int i, int j, int k) {
+public abstract class PotionSlotMixin extends Slot {
+    public PotionSlotMixin(Container container, int i, int j, int k) {
         super(container, i, j, k);
     }
     @Inject(method = "mayPlaceItem", at = @At("HEAD"), cancellable = true)
