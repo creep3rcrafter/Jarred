@@ -7,3 +7,8 @@ accessible method net/minecraft/world/item/alchemy/PotionBrewing addContainer (L
 accessible method net/minecraft/world/item/alchemy/PotionBrewing addMix (Lnet/minecraft/world/item/alchemy/Potion;Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/alchemy/Potion;)V
 accessible class net/minecraft/world/inventory/BrewingStandMenu$PotionSlot
 accessible method net/minecraft/client/renderer/item/ItemProperties register (Lnet/minecraft/world/item/Item;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/client/renderer/item/ClampedItemPropertyFunction;)V
+accessible field net/minecraft/world/level/block/entity/BrewingStandBlockEntity fuel I
+accessible field net/minecraft/world/level/block/entity/BrewingStandBlockEntity brewTime I
+accessible field net/minecraft/world/level/block/entity/BrewingStandBlockEntity ingredient Lnet/minecraft/world/item/Item;
+accessible field net/minecraft/world/level/block/entity/BrewingStandBlockEntity items Lnet/minecraft/core/NonNullList;
+accessible method net/minecraft/world/level/block/entity/BrewingStandBlockEntity isBrewable (Lnet/minecraft/core/NonNullList;)Z

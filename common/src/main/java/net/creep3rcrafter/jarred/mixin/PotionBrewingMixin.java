@@ -20,7 +20,7 @@ public abstract class PotionBrewingMixin {
 
     @Inject(method = "hasMix", at = @At("HEAD"), cancellable = true)
     private static void inject1(ItemStack containerItemStack, ItemStack ingredientItemStack, CallbackInfoReturnable<Boolean> cir) {
-        System.out.println("hasMixTest");
+        //System.out.println("hasMixTest");
         if (containerItemStack.is(ModItems.POTION_JAR.get())){
             if (ingredientItemStack.is(Items.POTION)){
                 System.out.println("hasMix");
@@ -33,7 +33,7 @@ public abstract class PotionBrewingMixin {
     private static void inject2(ItemStack itemStack, CallbackInfoReturnable<Boolean> cir) {
         if (itemStack.is(Items.POTION)){
             if ((PotionUtils.getMobEffects(itemStack)).size() > 0){
-                System.out.println("isIngredient");
+                //System.out.println("isIngredient");
                 cir.setReturnValue(true);
             }
         }
