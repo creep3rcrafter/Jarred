@@ -15,9 +15,10 @@ public abstract class PotionSlotMixin extends Slot {
     public PotionSlotMixin(Container container, int i, int j, int k) {
         super(container, i, j, k);
     }
-    @Inject(method = "mayPlaceItem", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "mayPlaceItem", at = @At("RETURN"), cancellable = true)
     private static void inject(ItemStack itemStack, CallbackInfoReturnable<Boolean> cir){
-        cir.setReturnValue(itemStack.is(Items.POTION) || itemStack.is(Items.SPLASH_POTION) || itemStack.is(Items.LINGERING_POTION) || itemStack.is(Items.GLASS_BOTTLE)|| (itemStack.is(ModItems.POTION_JAR.get()) && !itemStack.isDamaged()));
+        // && !itemStack.isDamaged()
+        cir.setReturnValue(cir.getReturnValue() || (itemStack.is(ModItems.POTION_JAR.get())));
     }
 
 }

@@ -4,6 +4,7 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.creep3rcrafter.jarred.Jarred;
 import net.creep3rcrafter.jarred.ModFoods;
+import net.creep3rcrafter.jarred.item.EmptyJarItem;
 import net.creep3rcrafter.jarred.item.FoodJarItem;
 import net.creep3rcrafter.jarred.item.MilkJarItem;
 import net.creep3rcrafter.jarred.item.PotionJarItem;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Jarred.MOD_ID, Registry.ITEM_REGISTRY);
     public static final RegistrySupplier<Item> EMPTY_JAR = ITEMS.register("empty_jar", () ->
-            new Item(new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_BREWING)));
+            new EmptyJarItem(new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_BREWING)));
     public static final RegistrySupplier<Item> POTION_JAR = ITEMS.register("potion_jar", () ->
             new PotionJarItem(new Item.Properties().stacksTo(1).defaultDurability(3).tab(CreativeModeTab.TAB_BREWING)
                     .craftRemainder(ModItems.EMPTY_JAR.get())));

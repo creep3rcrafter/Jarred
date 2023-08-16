@@ -12,3 +12,5 @@ accessible field net/minecraft/world/level/block/entity/BrewingStandBlockEntity 
 accessible field net/minecraft/world/level/block/entity/BrewingStandBlockEntity ingredient Lnet/minecraft/world/item/Item;
 accessible field net/minecraft/world/level/block/entity/BrewingStandBlockEntity items Lnet/minecraft/core/NonNullList;
 accessible method net/minecraft/world/level/block/entity/BrewingStandBlockEntity isBrewable (Lnet/minecraft/core/NonNullList;)Z
+accessible field net/minecraft/world/entity/animal/MushroomCow effect Lnet/minecraft/world/effect/MobEffect;
+accessible field net/minecraft/world/entity/animal/MushroomCow effectDuration I

@@ -85,15 +85,37 @@ publishing {
 }
 modrinth{
     token = System.getenv("MODRINTH_TOKEN")
-    versionName = "${rootProject.archives_base_name}-" + "${rootProject.version}-" + "${rootProject.minecraft_version}-Fabric"
-    projectId = "projectId"
-    versionNumber = "1.0.0"
-    versionType = "release"
+    versionName = "${project.archives_base_name}-${project.mod_version}-${project.minecraft_version}-${project.fabric_suffix}"
+    projectId = project.modrinth_id
+    versionNumber = project.mod_version
+    versionType = project.fabric_release_type
     uploadFile = remapJar
-    gameVersions = ["1.19.2"]
-    loaders = ["fabric"]
-    changelog = "First Upload Hope You Like It!"
+    gameVersions = [project.minecraft_version]
+    loaders = ['fabric']
+    changelog = project.changelog
     dependencies{
-        required.version "aNnwGOML"
+        required.version project.fabric_modrinth_dependancies
+    }
+    debugMode = fabric_debug.toBoolean()
+}
+tasks.getByName('curseforge').dependsOn(':build', ':fabric:remapJar')
+curseforge{
+    apiKey = System.getenv("CURSEFORGE_API")
+    project {
+        id = project.curseforge_id
+        changelog = project.changelog
+        releaseType = project.fabric_release_type
+        addGameVersion 'Fabric'
+        addGameVersion project.minecraft_version
+        relations {
+            requiredDependency project.curseforge_dependency
+        }
+        mainArtifact(remapJar){
+            displayName = "${project.archives_base_name}-${project.mod_version}-${project.minecraft_version}-${project.fabric_suffix}"
+        }
+
+    }
+    options{
+        debug = project.fabric_debug.toBoolean()
     }
 }

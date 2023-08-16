@@ -95,15 +95,37 @@ publishing {
 }
 modrinth{
     token = System.getenv("MODRINTH_TOKEN")
-    versionName = "${rootProject.archives_base_name}-" + "${rootProject.version}-" + "${rootProject.minecraft_version}-Quilt"
-    projectId = "projectid"
-    versionNumber = "1.0.0"
-    versionType = "release"
+    versionName = "${project.archives_base_name}-${project.mod_version}-${project.minecraft_version}-${project.quilt_suffix}"
+    projectId = project.modrinth_id
+    versionNumber = project.mod_version
+    versionType = project.quilt_release_type
     uploadFile = remapJar
-    gameVersions = ["1.19.2"]
+    gameVersions = [project.minecraft_version]
     loaders = ["quilt"]
-    changelog = "First Upload Hope You Like It!"
+    changelog = project.changelog
     dependencies{
-        required.version "aNnwGOML"
+        required.version project.fabric_modrinth_dependancies
+    }
+    debugMode = project.quilt_debug.toBoolean()
+}
+tasks.getByName('curseforge').dependsOn(':build', ':quilt:remapJar')
+curseforge{
+    apiKey = System.getenv("CURSEFORGE_API")
+    project {
+        id = project.curseforge_id
+        changelog = project.changelog
+        releaseType = project.quilt_release_type
+        addGameVersion 'Quilt'
+        addGameVersion project.minecraft_version
+        relations {
+            requiredDependency project.curseforge_dependency
+        }
+        mainArtifact(remapJar){
+            displayName = "${project.archives_base_name}-${project.mod_version}-${project.minecraft_version}-${project.quilt_suffix}"
+        }
+
+    }
+    options{
+        debug = project.quilt_debug.toBoolean()
     }
 }
